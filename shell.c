@@ -10,7 +10,7 @@ size_t n = 0;
 char *word;
 char *delim = " \n";
 int i = 0;
-char **cmd_args = malloc((i + 1) * sizeof(char *));
+char *cmd_args[];
 
 pid_t pid;
 
@@ -27,9 +27,10 @@ user_input = strdup(lineptr);
 word = strtok(user_input, delim);
 i = 0;
 while (word != NULL) {
-i++;
+cmd_args[i++] = word;
 word = strtok(NULL, delim);
 }
+cmd_args[i] = NULL;
 
 /*char **cmd_args = malloc((i + 1) * sizeof(char *));*/
 /*if (cmd_args == NULL) {
